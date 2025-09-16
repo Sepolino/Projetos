@@ -1,0 +1,117 @@
+import java.util.*;
+
+class User{
+    String nome;
+    String senha;
+    String email;
+    int idUser = 1;
+    Scanner scanner = new Scanner(System.in);
+
+    User(int idUser, String nome, String email, String senha){
+        this.idUser = idUser;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    Map<Integer, User> userMap = new HashMap<>();
+
+    public User novoUser(String nome, String email, String senha){
+        User novoUser = new User(idUser++, nome, email, senha);
+        userMap.put(idUser, novoUser);
+        System.out.println("Usuário criado com sucesso!");
+        return novoUser;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public int getId(){
+        return idUser;
+    }
+
+    public String getSenha(){
+        return senha;
+    }
+
+    public void setSenha(String senha){
+        this.senha = senha;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public User consultarUser(int userId){
+        if(userMap.containsKey(userId)) {
+            User userEncontrado = userMap.get(userId);
+            System.out.println("Olá " + userEncontrado.getNome());
+            System.out.print("Insira sua senha: ");
+            String senhaConsulta = scanner.nextLine();
+            if (senhaConsulta.equals(userEncontrado.getSenha())) {
+                return userEncontrado;
+            } else {
+                System.out.println("Senha incorreta. Tente novamente.");
+                return null;
+            }
+        }
+        else{
+            System.out.println("Usuário não encontrado. Tente novamente outro ID!");
+            return null;
+        }
+    }
+
+    public void mudarSenha(User user){
+        if(user != null){
+            System.out.print("Agora, digite a sua nova senha: ");
+            String senhaNova = scanner.nextLine();
+            user.setSenha(senhaNova);
+            System.out.println("Senha alterada com sucesso!");
+            System.out.println("Pressione Enter para continuar...");
+        }
+        else{
+            System.out.println("Não foi possível alterar a senha. Usuário inválido.");
+            return;
+        }
+    }
+
+    public void mudarEmail(User user){
+        if(user != null){
+            System.out.print("Digite o seu novo e-mail: ");
+            String emailNovo = scanner.nextLine();
+            user.setEmail(emailNovo);
+            System.out.println("Email alterado com sucesso!");
+            System.out.println("Pressione Enter para continuar...");
+        }
+        else{
+            System.out.println("Não foi possível alterar a senha. Usuário inválido");
+        }
+    }
+
+}
+
+class Conta{
+        User user;
+        double saldo;
+        String senhaT;
+
+        Conta(User user, double saldo, String senhaT){
+            this.user = user;
+            this.saldo = saldo;
+            this.senhaT = senhaT;
+        }
+
+
+}
+
+
+public class Main{
+    public static void main(String[] args){
+
+    }
+}
