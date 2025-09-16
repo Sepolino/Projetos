@@ -1,12 +1,3 @@
-import java.util.*;
-
-class User{
-    String nome;
-    String senha;
-    String email;
-    int idUser = 1;
-    Scanner scanner = new Scanner(System.in);
-
     User(int idUser, String nome, String email, String senha){
         this.idUser = idUser;
         this.nome = nome;
@@ -16,11 +7,15 @@ class User{
 
     Map<Integer, User> userMap = new HashMap<>();
 
-    public User novoUser(String nome, String email, String senha){
+    public User cadastroUser(String nome, String email, String senha){
         User novoUser = new User(idUser++, nome, email, senha);
         userMap.put(idUser, novoUser);
         System.out.println("Usuário criado com sucesso!");
         return novoUser;
+    }
+
+    public int login(String nome, String email, String senha){
+        if(nome || )
     }
 
     public String getNome(){
@@ -105,6 +100,8 @@ class Conta{
             this.saldo = saldo;
             this.senhaT = senhaT;
         }
+
+        public Conta criarConta()
 
 
 }
