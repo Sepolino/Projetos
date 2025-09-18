@@ -1,3 +1,12 @@
+import java.util.*
+class User{
+        String nome;
+        String email;
+        String senha;
+        int idUser;
+        
+        Scanner scanner = new Scanner(System.in);
+
     User(int idUser, String nome, String email, String senha){
         this.idUser = idUser;
         this.nome = nome;
